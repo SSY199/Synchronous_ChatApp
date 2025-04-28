@@ -1,14 +1,20 @@
  import React from 'react'
 import { Button } from './components/ui/button'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Auth from './Pages/Auth'
+import Profile from './Pages/Profile'
+import Chat from './Pages/Chat'
  
  const App = () => {
    return (
-     <div>
-      <Button variant="default">Hello World</Button>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-     </div>
+     <BrowserRouter>
+      <Routes>
+        <Route path='/auth' element={<Auth/>} /> 
+        <Route path='/chat' element={<Chat/>} />
+        <Route path='/profile' element={<Profile/>} /> 
+        <Route path='*' element={<Navigate to='/auth' />} />
+      </Routes>
+     </BrowserRouter>
    )
  }
  
